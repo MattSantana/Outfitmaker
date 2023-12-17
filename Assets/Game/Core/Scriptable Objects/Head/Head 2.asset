@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee53a30296424a44b8c7027e6b48631, type: 3}
+  m_Name: Head 2
+  m_EditorClassIdentifier: 
+  bodyPartName: Hat
+  bodyPartAnimationIndex: 2
+  allAnimationsRegardingThisBodyPart:
+  - {fileID: 7400000, guid: 25ebd111e98a92042ac521540db98822, type: 2}
+  - {fileID: 7400000, guid: c9bb1a04b6467b346917d4c085cd3a10, type: 2}
+  - {fileID: 7400000, guid: d3a1e22e2bc7a82489fe4ea27a146bc4, type: 2}
+  - {fileID: 7400000, guid: fd8d15bc64ddce6449586f8106d87d39, type: 2}
+  - {fileID: 7400000, guid: 654dd27e292fa334fa52c0c2ba58cadd, type: 2}
+  - {fileID: 7400000, guid: e9d3528bf7ce91840ada00445fec70c2, type: 2}
+  - {fileID: 7400000, guid: 93e7ca85468c9714181c56613b26560d, type: 2}
+  - {fileID: 7400000, guid: 627f106003f61654881553df9986aac6, type: 2}

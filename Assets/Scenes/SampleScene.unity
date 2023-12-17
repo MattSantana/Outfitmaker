@@ -2707,10 +2707,12 @@ MonoBehaviour:
     bodyPartOptions:
     - {fileID: 11400000, guid: f48f24f6b8c46ca479cc70fce04d3a45, type: 2}
     - {fileID: 11400000, guid: 77dd0ca66849c20438023c38e5052556, type: 2}
+    - {fileID: 11400000, guid: c74accbf17e1c084ba0cc2d1409b80b7, type: 2}
     bodyPartCurrentIndex: 0
   - bodyPartName: Torso
     bodyPartOptions:
     - {fileID: 11400000, guid: 3c54f7cb5253f524c9ced92789f7345b, type: 2}
+    - {fileID: 11400000, guid: 0b95fa0ae14479f46a21d4dec886a4b4, type: 2}
     bodyPartCurrentIndex: 0
 --- !u!1 &1437309429
 GameObject:
