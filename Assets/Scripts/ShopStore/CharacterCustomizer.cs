@@ -45,7 +45,7 @@ public class CharacterCustomizer : MonoBehaviour
             }
 
             UpdateCurrentPart(partIndex);
-        }    
+        }  
     }
 
     private bool ValidateIndexValue(int partIndex)

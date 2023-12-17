@@ -18,4 +18,4 @@ MonoBehaviour:
   - bodyPartName: Head
     bodyPart: {fileID: 11400000, guid: f48f24f6b8c46ca479cc70fce04d3a45, type: 2}
   - bodyPartName: Torso
-    bodyPart: {fileID: 11400000, guid: 3c54f7cb5253f524c9ced92789f7345b, type: 2}
+    bodyPart: {fileID: 11400000, guid: 0b95fa0ae14479f46a21d4dec886a4b4, type: 2}

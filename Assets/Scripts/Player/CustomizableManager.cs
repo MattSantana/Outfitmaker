@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,9 +37,11 @@ public class CustomizableManager : MonoBehaviour
         {
             // Get current body part
             string partType = bodyPartTypes[partIndex];
+            Debug.Log(partType);
             // Get current body part ID
             string partID = charSkeleton.CharSkeletonMembers[partIndex].bodyPart.bodyPartAnimationIndex.ToString();
-
+            Debug.Log(partID);
+            Debug.Log(partIndex);
             for (int stateIndex = 0; stateIndex < characterStates.Length; stateIndex++)
             {
                 string state = characterStates[stateIndex];
@@ -49,7 +50,7 @@ public class CustomizableManager : MonoBehaviour
                     string direction = characterDirections[directionIndex];
 
                     // Get players animation from player body
-                    // ***NOTE: Unless Changed Here, Animation Naming Must Be: "[Type]_[Index]_[state]_[direction]" (Ex. Body_0_idle_down)
+                    //name convention to get the animations
                     animationClip = Resources.Load<AnimationClip>("Player Animations/" + partType + "/" + partType + "_" + partID + "_" + state + "_" + direction);
 
                     // Override default animation

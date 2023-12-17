@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee53a30296424a44b8c7027e6b48631, type: 3}
   m_Name: Head 2
   m_EditorClassIdentifier: 
-  bodyPartName: Hat
+  bodyPartName: Hair_03
   bodyPartAnimationIndex: 2
   allAnimationsRegardingThisBodyPart:
   - {fileID: 7400000, guid: 25ebd111e98a92042ac521540db98822, type: 2}
