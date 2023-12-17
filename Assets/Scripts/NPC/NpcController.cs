@@ -11,7 +11,7 @@ public class NpcController : MonoBehaviour
     }
     private void Interact()
     {
-        DialogManager.Instance.ShowDialog(dialog);
+        StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
     }
 
     private void OnDisable() {

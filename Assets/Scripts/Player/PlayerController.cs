@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
@@ -11,51 +12,60 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator playerAnimator;
     private Transform storeOwner;
-    private bool shouldDrawGizmos;
     private bool canMove = true;
+
+    //Singleton
+    public static PlayerController Instance { get; private set ; }
+
+    public delegate bool OnPlayerInteraction();
+    public static OnPlayerInteraction onPlayerInteraction;
     private void Awake() {
+        Instance = this;
         playerControls = new PlayerControls();
 
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         storeOwner = GameObject.FindGameObjectWithTag("StoreOwner").transform;
     }
-
+    private void Start() {
+        DialogManager.Instance.onClosingDialog += EnablelingActions;
+    }
     private void Update() {
-        PlayerMovementInputReader();
+        
+        if(canMove)
+        {
+            PlayerMovementInputReader();
+        }
+   
         Animate();
 
         if(InteractableFinder())
         {
-            playerControls.PlayerActions.Interaction.performed += PlayerInteractionReader;
-            shouldDrawGizmos = true;
+            playerControls.PlayerActions.Interaction.performed += PlayerInteractionReader;    
         }
         else
         {
             playerControls.PlayerActions.Interaction.performed -= PlayerInteractionReader;
-            shouldDrawGizmos = false;
         }
     }
-    private void FixedUpdate() {
+    private void FixedUpdate() 
+    {
         Move();
     }
+
+    #region movement section
     private void PlayerMovementInputReader()
     {
-        if(canMove)
+        movement = playerControls.PlayerActions.Move.ReadValue<Vector2>();  
+
+        if (movement.x != 0 || movement.y != 0)
         {
-            movement = playerControls.PlayerActions.Move.ReadValue<Vector2>();  
-
-            if (movement.x != 0 || movement.y != 0)
-            {
-                lastMoveDirection = movement;
-            } 
-        }
+            lastMoveDirection = movement;
+        } 
     }
-
-    private void PlayerInteractionReader(InputAction.CallbackContext context)
+    private void Move()
     {
-        DialogManager.onPlayerInteract.Invoke();
-        canMove = false;
+        rb.MovePosition( rb.position + movement * (moveSpeed * Time.fixedDeltaTime) );
     }
     private void Animate()
     {
@@ -65,6 +75,24 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat("lastMoveY", lastMoveDirection.y);
         playerAnimator.SetFloat("speed", movement.magnitude);
     }
+    #endregion
+
+    #region interaction section
+
+    private void PlayerInteractionReader(InputAction.CallbackContext context)
+    {
+        DialogManager.onPlayerInteract.Invoke();
+        canMove = false;
+    }
+
+    private void EnablelingActions()
+    {
+        canMove = true;
+    }
+    public bool IsInteractionPressed()
+    {
+        return playerControls.PlayerActions.Interaction.triggered;
+    }
 
     private bool InteractableFinder()
     {
@@ -72,19 +100,9 @@ public class PlayerController : MonoBehaviour
 
         return distance < interecationDistance;
     }
-    private void Move()
-    {
-        rb.MovePosition( rb.position + movement * (moveSpeed * Time.fixedDeltaTime) );
-    }
-    private void OnDrawGizmos()
-    {
-        
-        if (shouldDrawGizmos)
-        {
-            Gizmos.color = Color.green; // Cor dos gizmos
-            Gizmos.DrawWireSphere(storeOwner.position, 3f);
-        }
-    }
+
+    #endregion
+
     #region // enablaling inputs
     private void OnEnable() {
         playerControls.Enable();
