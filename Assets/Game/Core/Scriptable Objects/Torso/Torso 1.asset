@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartName: Torso_02
   bodyPartAnimationIndex: 1
+  itemPriceCost: 50
   allAnimationsRegardingThisBodyPart:
   - {fileID: 7400000, guid: 1d424b4ac118c8946aebcfda39aa904d, type: 2}
   - {fileID: 7400000, guid: 070ba376b26174e48bc8b7575e7b6bcc, type: 2}

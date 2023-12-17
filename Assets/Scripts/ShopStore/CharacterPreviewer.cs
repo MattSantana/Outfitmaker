@@ -9,7 +9,7 @@ public class CharacterPreviewer : MonoBehaviour
     private Vector2[] positions;
     private int currentPosition;
 
-    private void Start()
+    private void OnEnable()
     {
         animator = GetComponent<Animator>();
         CreatePositions();

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,15 +63,19 @@ public class CharacterCustomizer : MonoBehaviour
     }
 
     private void GetCurrentBodyParts(int partIndex)
-    {
+    {   
+        //get item price text
+        bodyPartSelections[partIndex].bodyPartPriceTextComponent.text = "Cost: " + charSkeleton.characterSkeletonMember[partIndex].bodyPart.itemPriceCost.ToString() + " coins";
         // Get Current Body Part Animation ID
-        bodyPartSelections[partIndex].bodyPartCurrentIndex = charSkeleton.CharSkeletonMembers[partIndex].bodyPart.bodyPartAnimationIndex;
+        bodyPartSelections[partIndex].bodyPartCurrentIndex = charSkeleton.characterSkeletonMember[partIndex].bodyPart.bodyPartAnimationIndex;
     }
 
     private void UpdateCurrentPart(int partIndex)
     {
+        //update text price
+        bodyPartSelections[partIndex].bodyPartPriceTextComponent.text = "Cost: " + bodyPartSelections[partIndex].bodyPartOptions[bodyPartSelections[partIndex].bodyPartCurrentIndex].itemPriceCost.ToString() + " coins";
         // Update Character Body Part
-        charSkeleton.CharSkeletonMembers[partIndex].bodyPart = bodyPartSelections[partIndex].bodyPartOptions[bodyPartSelections[partIndex].bodyPartCurrentIndex];
+        charSkeleton.characterSkeletonMember[partIndex].bodyPart = bodyPartSelections[partIndex].bodyPartOptions[bodyPartSelections[partIndex].bodyPartCurrentIndex];
     }
 }
 
@@ -80,6 +85,6 @@ public class BodyPartSelection
     public string bodyPartName;
     public BodyPart[] bodyPartOptions;
 
-    //[SerializeField] private Text bodyPartNameTextComponent;
+    public TextMeshProUGUI bodyPartPriceTextComponent;
     [HideInInspector] public int bodyPartCurrentIndex;
 }

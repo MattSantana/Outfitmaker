@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartName: Hair_01
   bodyPartAnimationIndex: 0
+  itemPriceCost: 0
   allAnimationsRegardingThisBodyPart:
   - {fileID: 7400000, guid: 042816ea9ca20bb49af8a8dfc5cb3d33, type: 2}
   - {fileID: 7400000, guid: 405a14714ff432544a9bff1d8a13104d, type: 2}

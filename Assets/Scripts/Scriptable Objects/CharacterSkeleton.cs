@@ -3,10 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Character Skeleton", menuName = "Character Skeleton")]
 public class CharacterSkeleton : ScriptableObject
 {
-    [SerializeField] private BodyMember[] characterSkeletonMember;
-    public BodyMember[] CharSkeletonMembers{
-        get{ return characterSkeletonMember ; }
-    }
+    public BodyMember[] characterSkeletonMember;
+
 }
 
 [System.Serializable]

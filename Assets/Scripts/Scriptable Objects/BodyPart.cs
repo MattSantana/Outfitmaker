@@ -7,5 +7,6 @@ public class BodyPart : ScriptableObject
 {
     [SerializeField] private string bodyPartName;
     public int bodyPartAnimationIndex;
+    public int itemPriceCost;
     [SerializeField] private List<AnimationClip> allAnimationsRegardingThisBodyPart = new List<AnimationClip>();
 }

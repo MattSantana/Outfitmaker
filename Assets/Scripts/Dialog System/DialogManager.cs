@@ -45,7 +45,6 @@ public class DialogManager : MonoBehaviour
             }
             else if( currentLine == dialog.Lines.Count && dialog.InteractiveInterface )
             {
-                Debug.Log("entrei aqui");
                 dialog.InteractiveInterface.SetActive(true);
                 currentLine++;
             }
