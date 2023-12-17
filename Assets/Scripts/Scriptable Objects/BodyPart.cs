@@ -6,6 +6,6 @@ using UnityEngine;
 public class BodyPart : ScriptableObject
 {
     [SerializeField] private string bodyPartName;
-    [SerializeField] private int bodyPartAnimationIndex;
+    public int bodyPartAnimationIndex;
     [SerializeField] private List<AnimationClip> allAnimationsRegardingThisBodyPart = new List<AnimationClip>();
 }

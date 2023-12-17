@@ -4,11 +4,15 @@ using UnityEngine;
 public class CharacterSkeleton : ScriptableObject
 {
     [SerializeField] private BodyMember[] characterSkeletonMember;
+    public BodyMember[] CharSkeletonMembers{
+        get{ return characterSkeletonMember ; }
+    }
 }
 
 [System.Serializable]
 public class BodyMember
 {
     [SerializeField] private string bodyPartName;
-    [SerializeField] private BodyPart bodyPart;
+    public BodyPart bodyPart;
+
 }
