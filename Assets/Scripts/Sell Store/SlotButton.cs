@@ -5,6 +5,7 @@ public class SlotButton : MonoBehaviour
 {
     [SerializeField] private Button slotsButtons;
     [SerializeField] private GameObject sellButton;
+    [SerializeField] private AudioSource audioSource;
     void Start()
     {
         slotsButtons.onClick.AddListener(OnClickSlotButton);
@@ -12,6 +13,7 @@ public class SlotButton : MonoBehaviour
 
     private void OnClickSlotButton()
     {
+        audioSource.Play();
         sellButton.SetActive(true);
         slotsButtons.interactable = false;
     }    
