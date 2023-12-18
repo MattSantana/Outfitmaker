@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the OutfitMaker Prototype, a gaming experience inspired by titles like Stardew Valley, The Sims, and Pokémon. In this virtual realm, players have the opportunity to buy, sell, and equip a variety of clothes and items, creating a personalized and immersive gameplay experience.
+Welcome to the OutfitMaker Prototype, a gaming experience inspired by titles like Stardew Valley, The Sims, and Pokémon. In this simulation prototype, you'll be able to test features like to buy, sell, and equip a variety of clothes and items.
 
 ## Gameplay Controls
 
