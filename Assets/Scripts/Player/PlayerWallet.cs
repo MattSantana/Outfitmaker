@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerWallet : MonoBehaviour
 {
     public int coinsAmount;
-    [SerializeField] private TextMeshProUGUI coinsText;
+    [SerializeField] private TextMeshProUGUI[] coinsText;
 
     // Singleton
     public static PlayerWallet instance;
@@ -16,7 +16,12 @@ public class PlayerWallet : MonoBehaviour
     }
 
     private void Update() {
-        coinsText.text = coinsAmount.ToString();
+        coinsText[0].text = coinsAmount.ToString();
+        coinsText[1].text = coinsAmount.ToString();
     }
 
+    public void SellingItens( int amount)
+    {
+        coinsAmount+= amount;
+    }
 }

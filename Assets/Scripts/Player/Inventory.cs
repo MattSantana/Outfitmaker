@@ -8,9 +8,18 @@ public class Inventory : MonoBehaviour
     [SerializeField] private ItemUsableSelection[] itemUsableSelection;
     public Image[] slotImages;
     public Sprite[] collectedItensSprites;
+    public static Inventory instance;
     public int[] collectedItensPrice;
     private int slotIndex = -1;
     private int currentItemIndex;
+
+    public delegate void OnSellerActive();
+    public static OnSellerActive onSellerActive;
+
+    private void Awake() {
+        instance = this;
+        onSellerActive+= UpdateSlotVisibility;
+    }
     private void Start() 
     {
         slotImages = slots.GetComponentsInChildren<Image>();
@@ -23,6 +32,10 @@ public class Inventory : MonoBehaviour
             if (slotImages[i].sprite == null)
             {
                 slotImages[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                slotImages[i].gameObject.SetActive(true);
             }
         }
     }
@@ -54,6 +67,10 @@ public class Inventory : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+    }
+
+    private void OnDisable() {
+        onSellerActive-= UpdateSlotVisibility;
     }
 }
 [System.Serializable]
