@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float interecationDistance = 1f;
+    public float interecationDistance = 1f;
     private PlayerControls playerControls;
     private Vector2 movement;
     private Vector2 lastMoveDirection;
     private Rigidbody2D rb;
     private Animator playerAnimator;
-    private Transform storeOwner;
+    public Transform sellerOwner;
+    public Transform buyerOwner;
     private bool canMove = true;
 
     //Singleton
@@ -19,35 +20,35 @@ public class PlayerController : MonoBehaviour
 
     public delegate bool OnPlayerInteraction();
     public static OnPlayerInteraction onPlayerInteraction;
+  
+    public float sellerDistance;
+    public float buyerDistance;
     private void Awake() {
         Instance = this;
         playerControls = new PlayerControls();
 
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        storeOwner = GameObject.FindGameObjectWithTag("StoreOwner").transform;
+        sellerOwner = GameObject.FindGameObjectWithTag("SellerOwner").transform;
+        buyerOwner = GameObject.FindGameObjectWithTag("BuyerOwner").transform;
     }
     private void Start() {
         DialogManager.Instance.onClosingDialog += EnablelingActions;
     }
-    private void Update() {
-        
-        if(canMove)
+    private void Update()
+    {
+
+        if (canMove)
         {
             PlayerMovementInputReader();
         }
-   
+
         Animate();
 
-        if(InteractableFinder())
-        {
-            playerControls.PlayerActions.Interaction.performed += PlayerInteractionReader;    
-        }
-        else
-        {
-            playerControls.PlayerActions.Interaction.performed -= PlayerInteractionReader;
-        }
+        Interactions();
+
     }
+
     private void FixedUpdate() 
     {
         Move();
@@ -78,10 +79,31 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region interaction section
-
-    private void PlayerInteractionReader(InputAction.CallbackContext context)
+    private void Interactions()
     {
-        DialogManager.onPlayerInteract.Invoke();
+        if (SellerInteractFinder())
+        {
+            playerControls.PlayerActions.Interaction.performed += SelllerInteraction;
+        }
+        else if (BuyerInteractFinder())
+        {
+            playerControls.PlayerActions.Interaction.performed += BuyerInteraction;
+        }
+        else
+        {
+            playerControls.PlayerActions.Interaction.performed -= SelllerInteraction;
+            playerControls.PlayerActions.Interaction.performed -= BuyerInteraction;
+        }
+    }
+    private void SelllerInteraction(InputAction.CallbackContext context)
+    {
+        DialogManager.onSellerInteract.Invoke();
+        canMove = false;
+    }
+
+    private void BuyerInteraction(InputAction.CallbackContext context)
+    {
+        DialogManager.onBuyerInteract.Invoke();
         canMove = false;
     }
 
@@ -89,18 +111,24 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
     }
-    public bool IsInteractionPressed()
-    {
-        return playerControls.PlayerActions.Interaction.triggered;
-    }
 
-    private bool InteractableFinder()
+    private bool SellerInteractFinder()
     {
-        float distance = Vector2.Distance(transform.position, storeOwner.position );
+        float distance = Vector2.Distance(transform.position, sellerOwner.position );
+
+        sellerDistance = distance;
 
         return distance < interecationDistance;
     }
 
+    private bool BuyerInteractFinder()
+    {
+        float distance = Vector2.Distance(transform.position, buyerOwner.position );
+
+        buyerDistance = distance;
+
+        return distance < interecationDistance;
+    }
     #endregion
 
     #region // enablaling inputs

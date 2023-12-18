@@ -61,36 +61,6 @@ public class CustomizableManager : MonoBehaviour
         animatorOverrideController.ApplyOverrides(defaultAnimationClips);
     }
 
-    public void ResetePreviewCharacter()
-    {
-        // Override default animation clips with character body parts
-        for (int partIndex = 0; partIndex < bodyPartTypes.Length; partIndex++)
-        {
-            // Get current body part
-            string partType = bodyPartTypes[partIndex];
-            // Get current body part ID
-            string partID = charSkeleton.characterSkeletonMember[partIndex].bodyPart.bodyPartAnimationIndex.ToString();
-
-            for (int stateIndex = 0; stateIndex < characterStates.Length; stateIndex++)
-            {
-                string state = characterStates[stateIndex];
-                for (int directionIndex = 0; directionIndex < characterDirections.Length; directionIndex++)
-                {
-                    string direction = characterDirections[directionIndex];
-
-                    // Get players animation from player body
-                    //name convention to get the animations
-                    animationClip = Resources.Load<AnimationClip>("Player Animations/" + partType + "/" + partType + "_" + 0 + "_" + state + "_" + direction);
-
-                    // Override default animation
-                    defaultAnimationClips[partType + "_" + 0 + "_" + state + "_" + direction] = animationClip;
-                }
-            }
-        }
-
-        // Apply updated animations
-        animatorOverrideController.ApplyOverrides(defaultAnimationClips);
-    }
 }
 
 public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, AnimationClip>>

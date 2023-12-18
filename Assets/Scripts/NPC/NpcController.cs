@@ -7,7 +7,14 @@ public class NpcController : MonoBehaviour
     [SerializeField] private Dialog dialog;
 
     private void Awake() {
-        DialogManager.onPlayerInteract+=Interact;
+        if(gameObject.tag == "SellerOwner")
+        {
+            DialogManager.onSellerInteract+=Interact;
+        }
+        else
+        {
+            DialogManager.onBuyerInteract+=Interact;
+        }        
     }
     private void Interact()
     {
@@ -15,6 +22,13 @@ public class NpcController : MonoBehaviour
     }
 
     private void OnDisable() {
-        DialogManager.onPlayerInteract-=Interact;
+        if(gameObject.tag == "SellerOwner")
+        {
+            DialogManager.onSellerInteract-=Interact;
+        }
+        else
+        {
+            DialogManager.onBuyerInteract-=Interact;
+        } 
     }
 }

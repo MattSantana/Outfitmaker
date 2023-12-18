@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - StoreOwner
   - ShowCasePlayer
+  - BuyerOwner
+  - SellerOwner
   layers:
   - Default
   - TransparentFX

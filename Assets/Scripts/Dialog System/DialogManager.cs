@@ -20,8 +20,11 @@ public class DialogManager : MonoBehaviour
     public static DialogManager Instance { get; private set ; }
 
     // Observers
-    public delegate void OnPlayerInteract();
-    public static OnPlayerInteract onPlayerInteract;
+    public delegate void OnSellerInteract();
+    public static OnSellerInteract onSellerInteract;
+    public delegate void OnBuyerInteract();
+    public static OnSellerInteract onBuyerInteract;
+
     public delegate void OnPlayerMovementDisable();
     public static OnPlayerMovementDisable onPlayerMovementDisable;
 
