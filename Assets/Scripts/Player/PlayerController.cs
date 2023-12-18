@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMoveDirection;
     private Rigidbody2D rb;
     private Animator playerAnimator;
-    public Transform sellerOwner;
-    public Transform buyerOwner;
+    private Transform sellerOwner;
+    private Transform buyerOwner;
     private bool canMove = true;
 
     //Singleton
