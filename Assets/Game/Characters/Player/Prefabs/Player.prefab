@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -364,8 +364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   interecationDistance: 1.2
-  sellerOwner: {fileID: 0}
-  buyerOwner: {fileID: 0}
   sellerDistance: 0
   buyerDistance: 0
 --- !u!114 &5330395659939589203
@@ -406,7 +404,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsAmount: 0
-  coinsText: {fileID: 0}
+  coinsText:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1901832300127490490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,3 +419,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d9f1e9fc9618c48a3cc63c7a4bc383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slots: {fileID: 0}
+  itemUsableSelection:
+  - usableItemName: Potion
+    usablesOptions:
+    - {fileID: 11400000, guid: f58229df4ea5a8241abf3033ea29fc4e, type: 2}
+    itemPriceTextComponent: {fileID: 0}
+    usableCurrentIndex: 0
+  - usableItemName: Meat
+    usablesOptions:
+    - {fileID: 11400000, guid: 1e67117677b2e8d4dbc2371251d1065a, type: 2}
+    itemPriceTextComponent: {fileID: 0}
+    usableCurrentIndex: 0
+  slotImages: []
+  collectedItensSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  collectedItensPrice: 00000000000000000000000000000000
